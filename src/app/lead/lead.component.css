@@ -1,36 +1,56 @@
-.leads-page {
-  padding: 20px;
-  background-color: #f5f5f5;
+/* Styles for Toolbar */
+.toolbar {
+  background-color: #ffffff;
+  color: #6B21A8;
 }
 
-.table-wrapper {
-  margin: 20px 0;
-  width: 100%;
-  overflow-x: auto;  /* Enable horizontal scroll */
+.toolbar-item {
+  font-size: 20px;
+  background-color: #f3f4f6;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-right: 10px;
+  display: inline-block;
 }
 
-table {
-  width: 1800px;  /* Set a fixed width for table to trigger horizontal scroll */
+/* Styles for Divider */
+.divider {
+  height: 2px;
+  width: 75%;
+  border: 1px solid #6B21A8;
+  background-color: #6B21A8;
+  border-radius: 25px;
+  margin: 0 auto 16px;
 }
 
-mat-table {
-  width: 100%;
-}
-
-mat-header-cell, mat-cell {
+/* Styles for Leads Card */
+.leads-card {
   padding: 16px;
-  white-space: nowrap;  /* Prevent line breaks */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Styles for Card Title */
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #6B21A8;
+  margin-bottom: 16px;
+}
+
+/* Styles for Table Header and Cell */
+.header-cell {
+  background-color: #f3f4f6;
+  color: #333;
+  font-weight: bold;
+  padding: 12px;
+}
+
+.data-cell {
+  padding: 12px;
+  color: #555;
+}
+
+/* Pagination Control */
 mat-paginator {
-  margin-top: 20px;
-}
-
-.mat-tab-group {
-  background-color: white;
-  margin-bottom: 20px;
-}
-
-.mat-elevation-z8 {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 16px;
 }

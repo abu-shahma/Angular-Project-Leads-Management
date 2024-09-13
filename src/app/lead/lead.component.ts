@@ -1,82 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LeadService } from '../services/lead.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { Lead } from './lead.model'; // Ensure this model matches your API response structure
+
+
 
 @Component({
-  selector: 'app-lead',
+  selector: 'app-leads',
   templateUrl: './lead.component.html',
-  styleUrls: ['./lead.component.css']
+  styleUrl: './lead.component.css'
 })
 export class LeadComponent implements OnInit {
-  displayedColumns: string[] = [
-    'leadID',
-    'prospectName',
-    'phone',
-    'email',
-    'college',
-    'course',
-    'applicationForm',
-    'lastOutgoingCallStatus',
-    'lastOutgoingCallAt',
-    'lastActivity',
-    'leadPriority',
-    'instanceType',
-    'leadInstanceSource',
-    'leadType',
-    'leadOwnerAssignmentAge',
-    'leadOwner',
-    'action'
-  ];
+  dataSource = new MatTableDataSource<Lead>([]);
   leads: any[] = [];
-  selectedCategory = 'all';  // Default category
-  page = 1;
-  pageSize = 1;
-  totalLeads = 0;
-  totalPages = 0;
-  errorMessage = '';
+  error: string = '';
 
-  constructor(private leadService: LeadService) {}
+  displayedColumns: string[] = [
+    'id', 'name', 'phone', 'email', 'college', 'course',
+    'applicationForm', 'lastOutgoingCallStatus', 'lastOutgoingCallAt',
+    'lastActivity', 'leadPriority', 'instanceType', 'leadInstanceSource',
+    'leadType', 'leadOwnerAssignmentAge', 'leadOwner'
+  ];
 
-  ngOnInit() {
-    this.loadLeads();  // Load leads on component init
-  }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  pageSize = 10;
+  currentPage = 1;
+  totalRecords = 0;
 
-  loadLeads(event?: any) {
-    if (event) {
-      this.page = event.pageIndex + 1;  // Adjust for 0-based index
-      this.pageSize = event.pageSize;
-    }
 
-    this.leadService.getLeads(this.selectedCategory, this.page, this.pageSize).subscribe({
-      next: (response) => {
-        this.leads = response.data;
-        this.totalLeads = response.total;
-        this.totalPages = Math.ceil(this.totalLeads / this.pageSize);
-      },
-      error: (error) => {
-        this.errorMessage = 'Error loading leads. Please try again later.';
-        console.error('Error:', error);
-      }
-    });
-  }
+  constructor(private leadService: LeadService) { }
 
-  // Select a different category and load leads
-  selectCategory(category: string) {
-    this.selectedCategory = category;
-    this.page = 1;  // Reset to the first page
+  ngOnInit(): void {
     this.loadLeads();
   }
 
-  nextPage() {
-    if (this.page < this.totalPages) {
-      this.page++;
-      this.loadLeads();
-    }
+  loadLeads(): void {
+    this.leadService.getAllLeads().subscribe({
+      next: (response) => {
+        console.log("Fetched data", response);
+        this.totalRecords = response.count;
+            const newLeads = response.data || [];
+            this.dataSource.data = newLeads; // Set the data directly to the dataSource
+            this.dataSource.paginator = this.paginator;
+      },
+      error: (err) => {
+        this.error = 'Failed to load leads.';
+        console.error('Leads fetch error:', err);
+      }
+    });
   }
-
-  prevPage() {
-    if (this.page > 1) {
-      this.page--;
-      this.loadLeads();
-    }
+  onPageChange(event: any) {
+    this.currentPage = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.loadLeads();
   }
 }
