@@ -1,0 +1,117 @@
+.body {
+  background-color: #af8eec;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+  min-height: 400px;
+  margin-top: 200px;
+}
+
+.left-section, .right-section {
+  padding: 30px;
+}
+
+.left-section {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  margin-bottom: 20px;
+  width: 150px;
+}
+
+.illustration {
+  width: 100%;
+  max-width: 300px;
+}
+
+h4 {
+  font-family: 'Product Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 900; 
+  color: #333;
+  margin-bottom: 20px;
+}
+
+label {
+  font-family: 'Product Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  background-color: #6b47dc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px; 
+  cursor: pointer;
+  margin-top: 20px; 
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #5633c9;
+}
+
+.forgot-password {
+  color: #6b47dc;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}

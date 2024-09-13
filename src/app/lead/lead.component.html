@@ -1,0 +1,134 @@
+<div class="leads-page">
+  <!-- Tabs for category selection -->
+  <mat-tab-group>
+    <mat-tab label="ALL">
+      <!-- Leads table with horizontal scroll -->
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="leads" class="mat-elevation-z8">
+
+          <!-- Lead ID Column -->
+          <ng-container matColumnDef="leadID">
+            <th mat-header-cell *matHeaderCellDef> Lead ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.leadID}} </td>
+          </ng-container>
+
+          <!-- Prospect Name Column -->
+          <ng-container matColumnDef="prospectName">
+            <th mat-header-cell *matHeaderCellDef> Prospect Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.prospectName}} </td>
+          </ng-container>
+
+          <!-- Phone Column -->
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <!-- College Column -->
+          <ng-container matColumnDef="college">
+            <th mat-header-cell *matHeaderCellDef> College </th>
+            <td mat-cell *matCellDef="let element"> {{element.college}} </td>
+          </ng-container>
+
+          <!-- Course Column -->
+          <ng-container matColumnDef="course">
+            <th mat-header-cell *matHeaderCellDef> Course </th>
+            <td mat-cell *matCellDef="let element"> {{element.course}} </td>
+          </ng-container>
+
+          <!-- Application Form Column -->
+          <ng-container matColumnDef="applicationForm">
+            <th mat-header-cell *matHeaderCellDef> Application Form </th>
+            <td mat-cell *matCellDef="let element"> {{element.applicationForm}} </td>
+          </ng-container>
+
+          <!-- Last Outgoing Call Status Column -->
+          <ng-container matColumnDef="lastOutgoingCallStatus">
+            <th mat-header-cell *matHeaderCellDef> Last Outgoing Call Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastOutgoingCallStatus}} </td>
+          </ng-container>
+
+          <!-- Last Outgoing Call At Column -->
+          <ng-container matColumnDef="lastOutgoingCallAt">
+            <th mat-header-cell *matHeaderCellDef> Last Outgoing Call At </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastOutgoingCallAt}} </td>
+          </ng-container>
+
+          <!-- Last Activity Column -->
+          <ng-container matColumnDef="lastActivity">
+            <th mat-header-cell *matHeaderCellDef> Last Activity </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastActivity}} </td>
+          </ng-container>
+
+          <!-- Lead Priority Column -->
+          <ng-container matColumnDef="leadPriority">
+            <th mat-header-cell *matHeaderCellDef> Lead Priority </th>
+            <td mat-cell *matCellDef="let element"> {{element.leadPriority}} </td>
+          </ng-container>
+
+          <!-- Instance Type Column -->
+          <ng-container matColumnDef="instanceType">
+            <th mat-header-cell *matHeaderCellDef> Instance Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.instanceType}} </td>
+          </ng-container>
+
+          <!-- Lead Instance Source Column -->
+          <ng-container matColumnDef="leadInstanceSource">
+            <th mat-header-cell *matHeaderCellDef> Lead Instance Source </th>
+            <td mat-cell *matCellDef="let element"> {{element.leadInstanceSource}} </td>
+          </ng-container>
+
+          <!-- Lead Type Column -->
+          <ng-container matColumnDef="leadType">
+            <th mat-header-cell *matHeaderCellDef> Lead Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.leadType}} </td>
+          </ng-container>
+
+          <!-- Lead Owner Assignment Age Column -->
+          <ng-container matColumnDef="leadOwnerAssignmentAge">
+            <th mat-header-cell *matHeaderCellDef> Lead Owner Assignment Age </th>
+            <td mat-cell *matCellDef="let element"> {{element.leadOwnerAssignmentAge}} </td>
+          </ng-container>
+
+          <!-- Lead Owner Column -->
+          <ng-container matColumnDef="leadOwner">
+            <th mat-header-cell *matHeaderCellDef> Lead Owner </th>
+            <td mat-cell *matCellDef="let element"> {{element.leadOwner}} </td>
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element"> 
+              <!-- Add action buttons here -->
+              <button mat-icon-button>
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <!-- Table header and rows -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        
+        <!-- Pagination Controls -->
+        <mat-paginator [length]="totalLeads"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="[5, 10, 25, 100]"
+                       (page)="loadLeads($event)">
+        </mat-paginator>
+      </div>
+    </mat-tab>
+    <!-- Add more tabs as needed -->
+  </mat-tab-group>
+</div>

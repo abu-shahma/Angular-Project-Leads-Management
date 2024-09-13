@@ -1,6 +1,35 @@
 # LeadsManagement
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+# Angular Leads Management Project
+
+## Overview
+
+This Angular application is a Leads Management System designed to manage and display leads with features such as authentication, lead filtering, and pagination. It uses Angular for the frontend and integrates with a backend API to fetch lead data.
+
+## Features
+
+- **User Authentication**: Login and access the system using JWT-based authentication.
+- **Lead Display**: View leads with details such as ID, name, phone, email, college, and more.
+- **Pagination**: Navigate through pages of leads.
+- **Category Filtering**: Filter leads based on selected categories.
+
+## Prerequisites
+
+Before running the project, ensure you have the following installed:
+
+- **Node.js** (version 14.x or higher)
+- **Angular CLI** (version 15.x or higher)
+- **npm** (Node Package Manager)
+
+## Getting Started
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/yourusername/your-repository.git
+   cd your-repository
+
 
 ## Development server
 

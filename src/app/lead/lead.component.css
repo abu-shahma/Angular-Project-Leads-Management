@@ -1,0 +1,36 @@
+.leads-page {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.table-wrapper {
+  margin: 20px 0;
+  width: 100%;
+  overflow-x: auto;  /* Enable horizontal scroll */
+}
+
+table {
+  width: 1800px;  /* Set a fixed width for table to trigger horizontal scroll */
+}
+
+mat-table {
+  width: 100%;
+}
+
+mat-header-cell, mat-cell {
+  padding: 16px;
+  white-space: nowrap;  /* Prevent line breaks */
+}
+
+mat-paginator {
+  margin-top: 20px;
+}
+
+.mat-tab-group {
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
